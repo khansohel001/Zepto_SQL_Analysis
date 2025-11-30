@@ -32,9 +32,10 @@ Duplicate product names exist because the same product may be listed multiple ti
 
 **🧾 Column Details**
 Column	Description
+
 **sku_id**	Unique identifier for each SKU (Primary Key)
 
-***name**	Product name as listed on Zepto
+**name**	Product name as listed on Zepto
 
 **category**	Product category (e.g., Fruits, Snacks, Beverages)
 
