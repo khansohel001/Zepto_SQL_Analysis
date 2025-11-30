@@ -1,88 +1,84 @@
-**Zepto E-commerce Inventory Analysis – SQL Portfolio Project**
+# 🛒 Zepto E-commerce Inventory Analysis – SQL Portfolio Project
 
-This project is a hands-on Data Analyst portfolio exercise built on an e-commerce inventory dataset sourced from Zepto, one of India’s fastest-growing quick-commerce startups. It simulates the full workflow of a data analyst, from initial data exploration to generating actionable business insights using SQL.
+A comprehensive data analysis project simulating the full workflow of an e-commerce analyst, from database setup and data cleaning to generating actionable business insights using **Microsoft SQL Server**.
 
-**🚀 Who This Project Is For**
+---
 
-📊 Aspiring Data Analysts seeking a strong, practical project to showcase on LinkedIn or in interviews
+## 🎯 Project Objective
 
-📚 SQL learners wanting real-world, end-to-end dataset experience
+The main purpose of this project is to replicate real-world quick-commerce analytics tasks by transforming raw inventory data into strategic business intelligence.
 
-💼 Candidates preparing for roles in retail, e-commerce, or product analytics
+| Objective | Status |
+| :--- | :--- |
+| **Database Setup** | ✅ Completed |
+| **Data Cleaning & Preprocessing** | ✅ Completed |
+| **Exploratory Data Analysis (EDA)** | ✅ Completed |
+| **Insight Generation (SQL)** | ✅ Completed |
 
-**📌 Project Objective**
+---
 
-The main purpose of this project is to replicate real-world e-commerce analytics tasks by:
+## 🚀 Who This Project Is For
 
-✅ Setting up and managing a realistic, raw inventory database
+This project is a strong demonstration of practical SQL skills, ideal for:
 
-✅ Performing Exploratory Data Analysis (EDA) to investigate product categories, stock levels, and pricing trends
+* **📊 Aspiring Data Analysts** seeking a strong, practical project to showcase on LinkedIn or in interviews.
+* **📚 SQL Learners** wanting real-world, end-to-end dataset experience beyond basic joins.
+* **💼 Candidates** preparing for roles in retail, e-commerce, or product analytics.
 
-✅ Cleaning the data: addressing null values, removing invalid entries, and converting prices from paise to rupees
+---
 
-✅ Writing insight-driven SQL queries to analyze pricing, discounts, inventory, revenue, and stock availability
+## 📂 Dataset and Column Details
 
-**📁 About the Dataset**
+The dataset was sourced from Zepto's inventory listings, reflecting complex, real-world catalog behavior (e.g., duplicate product names for different packaging/weights).
 
-The dataset was scraped from Zepto’s official listings and reflects what analysts typically encounter in real-world e-commerce inventory systems.
+Each row corresponds to a unique **SKU (Stock Keeping Unit)**.
 
-Each row corresponds to a unique SKU (Stock Keeping Unit).
+| Column | Data Type | Description |
+| :--- | :--- | :--- |
+| **sku_id** | `INT` (Identity/PK) | Unique identifier for each SKU. |
+| **name** | `VARCHAR` | Product name as listed on Zepto. |
+| **category** | `VARCHAR` | Product category (e.g., Fruits, Snacks, Beverages). |
+| **mrp** | `DECIMAL(8,2)` | Maximum Retail Price (converted to ₹). |
+| **discountPercent** | `DECIMAL(5,2)` | Discount percentage applied on the MRP. |
+| **discountedSellingPrice** | `DECIMAL(8,2)` | Final selling price after discount (₹). |
+| **availableQuantity** | `INT` | Number of units currently in inventory. |
+| **weightInGms** | `INT` | Product weight in grams. |
+| **outOfStock** | `BIT` | Stock status (**1** = Out of Stock, **0** = In Stock). |
+| **quantity** | `INT` | Units per package (or weight for loose items). |
 
-Duplicate product names exist because the same product may be listed multiple times with different packaging, weights, or discounts, just like in real catalog systems.
+---
 
-**🧾 Column Details**
-Column	Description
+## 🧹 Data Cleaning and Preparation
 
-**sku_id**	Unique identifier for each SKU (Primary Key)
+The `zepto_SQL_data_analysis.sql` file includes critical data cleaning steps to ensure reliable analysis:
 
-**name**	Product name as listed on Zepto
+* **Handling Missing Keys:** Ensured `sku_id` (Primary Key) was added as an **`IDENTITY(1,1)`** column, as the raw flat file lacked unique identifiers.
+* **Price Cleaning:** Deleted entries where **MRP was ₹0**.
+* **Data Transformation:** **Converted all price columns** (`mrp`, `discountedSellingPrice`) from **Paise to Rupees (₹)** by dividing by 100, aligning the data with required currency standards.
 
-**category**	Product category (e.g., Fruits, Snacks, Beverages)
+---
 
-**mrp**	Maximum Retail Price (converted from paise to ₹)
+## 💡 Key Business Insights Generated
 
-**discountPercent**	Discount percentage applied on the MRP
+The following strategic questions were answered using advanced SQL techniques (Window Functions, Aggregation, and Conditional Logic):
 
-**discountedSellingPrice**	Selling price after discount (₹)
+* **Best-Value Products:** Identified **top 10 best-value products** based on the highest `discountPercent`.
+* **Inventory Gaps:** Identified **high-MRP products (>$300)** that are currently **out of stock** (Q2), flagging critical restocking opportunities.
+* **Category Performance:** Estimated **potential revenue** for each product category (Q3) by calculating `SUM(discountedSellingPrice * availableQuantity)`.
+* **Premium Pricing:** Filtered **expensive products (MRP > ₹500)** with **minimal discount (< 10%)**, identifying premium and low-promotion items.
+* **Promotional Intensity:** Ranked **top 5 categories** offering the highest **average discounts** (Q5).
+* **Value-for-Money:** Calculated **price per gram** (Q6) for products $\ge 100\text{g}$ to identify true value-for-money items.
+* **Logistics Grouping:** Grouped products based on weight into **Low ($<1000\text{g}$), Medium ($<5000\text{g}$), and Bulk** categories (Q7).
+* **Warehouse Load:** Measured **total inventory weight** per product category (Q8) for logistics and warehouse planning.
 
-**availableQuantity**	Number of units currently in inventory
+---
 
-**weightInGms**	Product weight in grams
+## 🛠️ How to View the Project
 
-**outOfStock**	Stock status (1 = Out of Stock, 0 = In Stock)
+The complete SQL workflow, including table creation, EDA queries, cleaning scripts, and all 8 business analysis queries, is contained in:
 
-**quantity**	Units per package (or weight for loose items)
+👉 **`zepto_SQL_data_analysis.sql`**
 
+---
 
-
-**5. 📊 Business Insights**
--Found top 10 best-value products based on discount percentage
-
--Identified high-MRP products that are currently out of stock
-
--Estimated potential revenue for each product category
-
--Filtered expensive products (MRP > ₹500) with minimal discount
-
--Ranked top 5 categories offering highest average discounts
-
--Calculated price per gram to identify value-for-money products
-
--Grouped products based on weight into Low, Medium, and Bulk categories
-
--Measured total inventory weight per product category
-
-
-**Open zepto_SQL_data_analysis.sql**
-
-**This file contains:**
-
--Table creation
-
--Data exploration
-
--Data cleaning
-
--SQL Business analysis
-
--**Thanks for checking out the project! Your support means a lot**
+**Thanks for checking out the project! Your support and feedback are highly valued.**
