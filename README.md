@@ -77,10 +77,10 @@ Column	Description
 
 **This file contains:**
 
---Table creation
+-Table creation
 
---Data exploration
+-Data exploration
 
---Data cleaning
+-Data cleaning
 
---SQL Business analysis
+-SQL Business analysis
