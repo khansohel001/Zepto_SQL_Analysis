@@ -33,12 +33,21 @@ Duplicate product names exist because the same product may be listed multiple ti
 **🧾 Column Details**
 Column	Description
 sku_id	Unique identifier for each SKU (Primary Key)
+
 name	Product name as listed on Zepto
+
 category	Product category (e.g., Fruits, Snacks, Beverages)
+
 mrp	Maximum Retail Price (converted from paise to ₹)
+
 discountPercent	Discount percentage applied on the MRP
+
 discountedSellingPrice	Selling price after discount (₹)
+
 availableQuantity	Number of units currently in inventory
+
 weightInGms	Product weight in grams
+
 outOfStock	Stock status (1 = Out of Stock, 0 = In Stock)
+
 quantity	Units per package (or weight for loose items)
