@@ -77,7 +77,7 @@ The following strategic questions were answered using advanced SQL techniques (W
 
 The complete SQL workflow, including table creation, EDA queries, cleaning scripts, and all 8 business analysis queries, is contained in:
 
-👉 **`zepto_SQL_data_analysis.sql`**
+👉 **`zepto_Code.sql`**
 
 ---
 
