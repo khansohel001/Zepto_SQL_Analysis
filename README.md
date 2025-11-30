@@ -84,3 +84,5 @@ Column	Description
 -Data cleaning
 
 -SQL Business analysis
+
+-**Thanks for checking out the project! Your support means a lot**
